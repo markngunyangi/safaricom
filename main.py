@@ -35,26 +35,48 @@ from sklearn.utils import shuffle
 
 import pandas as pd
 import numpy as np
+
 np.random.seed(1)
 
-def bundle():
-    for i in data3.index:
-        print(data3['Bundle'][i])
-
-data3 = pd.DataFrame({"Calls" : np.random.randint(low=1, high=50, size=10),
-                      "Credit bought per day" : np.random.randint(low=5, high=200, size=10),
-                      "Time taken per call" : np.random.randint(low=1, high=100, size=10),
-                      "Bundle" : None
-                     })
-
-def bundle():
+def data():
     for i in range(len(data3)):
-        if data3.loc[i, 'Calls'] > 10 or data3.loc[i, 'Credit bought per day'] > 20 or data3.loc[i, 'Time taken per call'] > 15:
-              print(data3.loc[i, 'Bundle'] == 5)
-        if data3.loc[i, 'Calls'] > 20 or data3.loc[i, 'Credit bought per day'] > 50 or data3.loc[i, 'Time taken per call'] > 60:
-            return data3.loc[i, 'Bundle'] == 20
-        if data3.loc[i, 'Calls'] > 50 or data3.loc[i, 'Credit bought per day'] > 200 or data3.loc[i, 'Time taken per call'] > 100:
-            return data3.loc[i, 'Bundle'] == 50
+        if data3.loc[i, 'Calls'] <= 10:
+            data2 = pd.DataFrame({
+                "Calls": np.random.randint(low=1, high=10, size=10),
+                "Credit bought per day": np.random.randint(low=5, high=20, size=10),
+                "Time taken per call": np.random.randint(low=1, high=15, size=10),
+            })
+            return data2
+        elif data3.loc[i, 'Calls'] <= 20:
+            data2 = pd.DataFrame({
+                "Calls": np.random.randint(low=11, high=20, size=10),
+                "Credit bought per day": np.random.randint(low=10, high=50, size=10),
+                "Time taken per call": np.random.randint(low=5, high=60, size=10),
+            })
+            return data2
+        else:
+            data2 = pd.DataFrame({
+                "Calls": np.random.randint(low=21, high=50, size=10),
+                "Credit bought per day": np.random.randint(low=50, high=200, size=10),
+                "Time taken per call": np.random.randint(low=10, high=100, size=10),
+            })
+            return data2
 
-bundle()
+
+data3 = pd.DataFrame({"Calls": np.random.randint(low=1, high=50, size=10)})
+
+# def bundle():
+#     for i in range(len(data3)):
+#             if data3.loc[i, 'Calls'] > 10:
+#                 data3.loc[i, 'Bundle'] = 5
+#
+#             data3.loc[i, 'Bundle'] = 5
+#             if data3.loc[i, 'Calls'] > 20:
+#                 data3.loc[i, 'Bundle'] = 20
+#             if data3.loc[i, 'Calls'] < 50:
+#                 data3.loc[i, 'Bundle'] = 60
+# bundle()
 print(data3)
+print(data())
+
+
